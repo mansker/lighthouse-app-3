@@ -74,7 +74,8 @@ public class PolicyViewView extends Composite<VerticalLayout> {
                 new ResponsiveStep("500px", 3));
         h2.setText("Activities");
         h2.setWidth("max-content");
-        h22.setText("blank text");
+//        Todo: placeholder text
+        h22.setText(" ");
         h22.setWidth("max-content");
         buttonPrimary.setText("New Activity");
         buttonPrimary.setWidth("min-content");

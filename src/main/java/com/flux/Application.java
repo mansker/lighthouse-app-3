@@ -1,6 +1,8 @@
 package com.flux;
 
 import com.flux.data.SamplePersonRepository;
+import com.flux.data.models.Account;
+import com.flux.data.repositories.AccountRepository;
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
@@ -40,4 +42,19 @@ public class Application implements AppShellConfigurator {
             }
         };
     }
+
+    SqlDataSourceScriptDatabaseInitializer dataSourceScriptDatabaseInitializer(DataSource dataSource,
+                                                                               SqlInitializationProperties properties, AccountRepository repository) {
+        // This bean ensures the database is only initialized when empty
+        return new SqlDataSourceScriptDatabaseInitializer(dataSource, properties) {
+            @Override
+            public boolean initializeDatabase() {
+                if (repository.count() == 0L) {
+                    return super.initializeDatabase();
+                }
+                return false;
+            }
+        };
+    }
+
 }

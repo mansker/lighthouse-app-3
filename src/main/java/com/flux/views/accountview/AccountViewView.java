@@ -93,7 +93,8 @@ public class AccountViewView extends Composite<VerticalLayout> {
                 new ResponsiveStep("500px", 3));
         h2.setText("Opportunities");
         h2.setWidth("max-content");
-        h22.setText("blank text");
+//        Todo: placeholder text
+        h22.setText(" ");
         h22.setWidth("max-content");
         buttonPrimary.setText("New quote");
         buttonPrimary.setWidth("min-content");
@@ -107,7 +108,8 @@ public class AccountViewView extends Composite<VerticalLayout> {
                 new ResponsiveStep("500px", 3));
         h23.setText("Activities");
         h23.setWidth("max-content");
-        h24.setText("blank text");
+//        Todo: placeholder text
+        h24.setText(" ");
         h24.setWidth("max-content");
         buttonPrimary2.setText("New Activity");
         buttonPrimary2.setWidth("min-content");

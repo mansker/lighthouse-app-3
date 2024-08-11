@@ -1,6 +1,8 @@
 package com.flux.views.agentdashboard;
 
 import com.flux.data.SamplePerson;
+import com.flux.data.models.Account;
+import com.flux.services.AccountService;
 import com.flux.services.SamplePersonService;
 import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.button.Button;
@@ -43,13 +45,15 @@ public class AgentDashboardView extends Composite<VerticalLayout> {
         H2 h2 = new H2();
         H2 h22 = new H2();
         Button buttonPrimary = new Button();
-        Grid stripedGrid = new Grid(SamplePerson.class);
+        //Grid stripedGrid = new Grid(SamplePerson.class);
+        Grid stripedGrid = new Grid(Account.class);
         FormLayout formLayout3Col2 = new FormLayout();
         H2 h23 = new H2();
         H2 h24 = new H2();
         Button buttonPrimary2 = new Button();
         MenuBar menuBar = new MenuBar();
-        Grid multiSelectGrid = new Grid(SamplePerson.class);
+        //Grid multiSelectGrid = new Grid(SamplePerson.class);
+        Grid multiSelectGrid = new Grid(Account.class);
         getContent().setWidth("100%");
         getContent().getStyle().set("flex-grow", "1");
         layoutRow.addClassName(Gap.MEDIUM);
@@ -63,16 +67,17 @@ public class AgentDashboardView extends Composite<VerticalLayout> {
         formLayout2Col.setWidth("100%");
         textSmall.setText("Agent Name: James Bond");
         textSmall.setWidth("100%");
-        textSmall.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+        textSmall.getStyle().set("font-size", "var(--lumo-font-size-m)"); //mans
         textSmall2.setText("Agent Number: 007");
         textSmall2.setWidth("100%");
-        textSmall2.getStyle().set("font-size", "var(--lumo-font-size-xs)");
+        textSmall2.getStyle().set("font-size", "var(--lumo-font-size-m)"); //mans
         formLayout3Col.setWidth("100%");
         formLayout3Col.setResponsiveSteps(new ResponsiveStep("0", 1), new ResponsiveStep("250px", 2),
                 new ResponsiveStep("500px", 3));
         h2.setText("Opportunities");
         h2.setWidth("max-content");
-        h22.setText("blank text");
+//        Todo: placeholder text
+        h22.setText(" ");
         h22.setWidth("max-content");
         buttonPrimary.setText("New Opportunity");
         buttonPrimary.setWidth("min-content");
@@ -86,7 +91,8 @@ public class AgentDashboardView extends Composite<VerticalLayout> {
                 new ResponsiveStep("500px", 3));
         h23.setText("Activities");
         h23.setWidth("max-content");
-        h24.setText("blank text");
+//        Todo: placeholder text
+        h24.setText(" ");
         h24.setWidth("max-content");
         buttonPrimary2.setText("New Activity");
         buttonPrimary2.setWidth("min-content");
@@ -116,13 +122,19 @@ public class AgentDashboardView extends Composite<VerticalLayout> {
     }
 
     private void setGridSampleData(Grid grid) {
-        grid.setItems(query -> samplePersonService.list(
+        /*grid.setItems(query -> samplePersonService.list(
                 PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
+                .stream());*/
+        grid.setItems(query -> accountService.list(
+                        PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
                 .stream());
     }
 
     @Autowired()
     private SamplePersonService samplePersonService;
+
+    @Autowired()
+    private AccountService accountService;
 
     private void setMenuBarSampleData(MenuBar menuBar) {
         menuBar.addItem("View");
