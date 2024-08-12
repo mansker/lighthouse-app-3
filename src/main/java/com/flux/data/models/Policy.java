@@ -11,7 +11,7 @@ public class Policy extends AbstractEntity {
     private String policyNumber;
     private Date originalEffectiveDate;
     private Date writtenDate;
-    private Month renewalMonth;
+    private String renewalMonth;
     private boolean isAutoRenewed;
     private String status;
 
@@ -39,11 +39,11 @@ public class Policy extends AbstractEntity {
         this.writtenDate = writtenDate;
     }
 
-    public Month getRenewalMonth() {
+    public String getRenewalMonth() {
         return renewalMonth;
     }
 
-    public void setRenewalMonth(Month renewalMonth) {
+    public void setRenewalMonth(String renewalMonth) {
         this.renewalMonth = renewalMonth;
     }
 

@@ -104,7 +104,7 @@ insert into account(version, id,account_number,first_name,last_name,email,phone,
 insert into account(version, id,account_number,first_name,last_name,email,phone,date_of_birth,isVIP) values (1, 3,'PUIC-CUST-0000000003','Samuel Alex','Zerna','sam.zerna@flux.com','53866726','2012-06-16',true)
 insert into account(version, id,account_number,first_name,last_name,email,phone,date_of_birth,isVIP) values (1, 4,'PUIC-CUST-0000000004','Gab Lionel','Zerna','gab.zerna@flux.com','53866422','1984-10-22',true)
 --Policy data
-insert into policy(id, version, fk_account_to_party, fk_agreements, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (1, 1, null, null, true, current timestamp, 'PUIC-POL-0000000001', 'July', current timestamp);
-insert into policy(id, version, fk_account_to_party, fk_agreements, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (1, 1, null, null, true, current timestamp, 'PUIC-POL-0000000002', 'November', current timestamp);
-insert into policy(id, version, fk_account_to_party, fk_agreements, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (1, 1, null, null, true, current timestamp, 'PUIC-POL-0000000003', 'June', current timestamp);
-insert into policy(id, version, fk_account_to_party, fk_agreements, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (1, 1, null, null, true, current timestamp, 'PUIC-POL-0000000004', 'October', current timestamp);
+insert into policy(id, version, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (1, 1, true,  null, 'PUIC-POL-0000000001', 'July',  CURRENT_DATE)
+insert into policy(id, version, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (2, 1, true,  CURRENT_DATE, 'PUIC-POL-0000000002', 'November',  CURRENT_DATE)
+insert into policy(id, version, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (3, 1, true,  null, 'PUIC-POL-0000000003', 'June',  CURRENT_DATE)
+insert into policy(id, version, is_auto_renewed, original_effective_date, policy_number, renewal_month, written_date) values (4, 1, true,  null, 'PUIC-POL-0000000004', 'October',  CURRENT_DATE)
