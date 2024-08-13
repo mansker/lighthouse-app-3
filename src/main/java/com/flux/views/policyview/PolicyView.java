@@ -33,9 +33,9 @@ import org.springframework.data.domain.PageRequest;
 @Menu(icon = "line-awesome/svg/car-side-solid.svg", order = 3)
 @Route(value = "policy-view")
 @Uses(Icon.class)
-public class PolicyViewView extends Composite<VerticalLayout> {
+public class PolicyView extends Composite<VerticalLayout> {
 
-    public PolicyViewView() {
+    public PolicyView() {
         HorizontalLayout layoutRow = new HorizontalLayout();
         VerticalLayout layoutColumn2 = new VerticalLayout();
         Paragraph textSmall = new Paragraph();

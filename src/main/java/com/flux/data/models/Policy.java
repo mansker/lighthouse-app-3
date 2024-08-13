@@ -1,13 +1,12 @@
 package com.flux.data.models;
 
-import com.flux.data.AbstractEntity;
+import com.flux.data.BaseEntity;
 import jakarta.persistence.Entity;
 
-import java.time.Month;
 import java.util.Date;
 
 @Entity
-public class Policy extends AbstractEntity {
+public class Policy extends BaseEntity {
     private String policyNumber;
     private Date originalEffectiveDate;
     private Date writtenDate;

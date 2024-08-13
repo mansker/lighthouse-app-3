@@ -1,14 +1,13 @@
 package com.flux.data.models;
 
-import com.flux.data.AbstractEntity;
+import com.flux.data.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
-public class Account extends AbstractEntity {
+public class Account extends BaseEntity {
 
 //    Table columns
     private String accountNumber;
@@ -17,8 +16,22 @@ public class Account extends AbstractEntity {
     @Email
     private String email;
     private String phone;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private boolean isVIP;
+
+    //Hibernate expects an empty constructor
+    private Account(){};
+
+    public Account(String accountNumber, String firstName, String lastName, String email, String phone, LocalDate dateOfBirth, boolean isVIP) {
+        this.accountNumber = accountNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.dateOfBirth = dateOfBirth;
+        this.isVIP = isVIP;
+    }
+
 
     public String getAccountNumber() {
         return accountNumber;
@@ -60,11 +73,11 @@ public class Account extends AbstractEntity {
         this.phone = phone;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

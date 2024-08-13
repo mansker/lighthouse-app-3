@@ -1,7 +1,10 @@
 package com.flux.views.agentdashboard;
 
 import com.flux.data.SamplePerson;
+import com.flux.data.dto.AccountDto;
 import com.flux.data.models.Account;
+import com.flux.data.models.Policy;
+import com.flux.services.AccountEndpoint;
 import com.flux.services.AccountService;
 import com.flux.services.SamplePersonService;
 import com.vaadin.flow.component.Composite;
@@ -26,8 +29,13 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.spring.data.VaadinSpringDataHelpers;
 import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
+import io.micrometer.common.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.repository.Query;
+
+import static com.flux.data.specification.AccountSpecification.stringLike;
 
 @PageTitle("Agent Dashboard")
 @Menu(icon = "line-awesome/svg/person-booth-solid.svg", order = 1)
@@ -122,12 +130,14 @@ public class AgentDashboardView extends Composite<VerticalLayout> {
     }
 
     private void setGridSampleData(Grid grid) {
-        /*grid.setItems(query -> samplePersonService.list(
-                PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
-                .stream());*/
+        Specification<Account> filter = Specification.where(stringLike("lastName", "Zerna")
+                .and(stringLike("firstName", "Mans")));
         grid.setItems(query -> accountService.list(
-                        PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)))
+                        PageRequest.of(query.getPage(), query.getPageSize(), VaadinSpringDataHelpers.toSpringDataSort(query)), filter)
                 .stream());
+//        grid.setItems(query -> accountService.getAllAccountsByLastname("last_name", "Zerna")
+//                .stream());
+
     }
 
     @Autowired()

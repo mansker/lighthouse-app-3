@@ -19,9 +19,9 @@ public class AccountEndpoint {
         this.service = service;
     }
 
-    public Page<Account> list(Pageable page) {
-        return service.list(page);
-    }
+//    public Page<Account> list(Pageable page) {
+//        return service.list(page);
+//    }
 
     public Optional<Account> get(Long id) {
         return service.get(id);

@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
 
 @Entity
-public class SamplePerson extends AbstractEntity {
+public class SamplePerson extends BaseEntity {
 
     private String firstName;
     private String lastName;
